@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import uuid from 'react-uuid';
 
 export default class TodoInput extends Component {
 
@@ -7,19 +8,37 @@ export default class TodoInput extends Component {
 
         this.state = {
             editItem: false,
-            item: ''
+            item: '',
+            id: uuid(),
+            items: []
         }
     }
 
-    handleChange = () => {
-        console.log('Handle Change')
+    handleChange = (e) => {
+        this.setState({
+            item: e.target.value
+        })
     }
 
-    handleSubmit = () => {
-        console.log('Handle submit')
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const newItem = {
+            id: this.state.id,
+            title: this.state.item,
+        }
+        const updatedItems = [...this.state.items, newItem]
+        console.log(updatedItems)
+
+        this.setState({
+            items: updatedItems,
+            item: '',
+            id: uuid(),
+            editItem: false
+        }, () => console.log(this.state))
     }
 
     render() {
+
         return (
             <div>
                 <div className="card border-primary card-body my-3">

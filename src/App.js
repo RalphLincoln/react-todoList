@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TodoInput from './Components/TodoInput';
-import TodoList from './Components/TodoList';
+
 
 
 // Testing my vs code git hub
@@ -17,7 +17,6 @@ class App extends Component {
               Todo input
             </h3>
             <TodoInput />
-            <TodoList />
           </div>
         </div>
       </div>

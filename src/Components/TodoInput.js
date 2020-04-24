@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from 'react-uuid';
+import TodoList from './TodoList'
 
 export default class TodoInput extends Component {
 
@@ -27,14 +28,14 @@ export default class TodoInput extends Component {
             title: this.state.item,
         }
         const updatedItems = [...this.state.items, newItem]
-        console.log(updatedItems)
+        // console.log(updatedItems)
 
         this.setState({
             items: updatedItems,
             item: '',
             id: uuid(),
             editItem: false
-        }, () => console.log(this.state))
+        })
     }
 
     render() {
@@ -54,6 +55,7 @@ export default class TodoInput extends Component {
                         <button className="btn btn-outline-primary btn-block mt-3 text-uppercase">add item</button>
                     </form>
                 </div>
+                <TodoList items={this.state.items} />
             </div>
         )
     }
